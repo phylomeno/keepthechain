@@ -1,6 +1,6 @@
 using System;
 
-namespace keepthechain_backend
+namespace KeepTheChain
 {
     public class WeatherForecast
     {

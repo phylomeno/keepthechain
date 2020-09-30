@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>keepthechain_backend</RootNamespace>
+    <RootNamespace>KeepTheChain</RootNamespace>
   </PropertyGroup>
 
 
