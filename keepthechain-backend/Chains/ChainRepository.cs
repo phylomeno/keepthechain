@@ -9,7 +9,7 @@ namespace KeepTheChain.Chains
 {
     public class ChainRepository
     {
-        private const string DatabaseId = "keepthechaindb";
+        private const string DatabaseId = "keepthechain";
         private const string ContainerId = "chains";
 
         private readonly Container _chainsContainer;
@@ -27,13 +27,18 @@ namespace KeepTheChain.Chains
 
         public IList<Chain> GetChains()
         {
-            return _chainsContainer.GetItemLinqQueryable<Chain>().ToList();
+            return _chainsContainer.GetItemLinqQueryable<Chain>(true).GetEnumerator().ToEnumerable().ToList();
         }
 
         public async Task<Chain> GetChain(string id)
         {
             var response = await _chainsContainer.ReadItemAsync<Chain>(id, new PartitionKey(id));
             return response.Resource;
+        }
+
+        public async Task RemoveChain(string id)
+        {
+            await _chainsContainer.DeleteItemAsync<Chain>(id, new PartitionKey(id));
         }
     }
 }

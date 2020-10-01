@@ -10,7 +10,7 @@ namespace KeepTheChain.Chains
         public IEnumerable<DateTime> Entries;
 
         [JsonProperty(PropertyName = "id")]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty(PropertyName = "Name")]
         public string Name { get; set; }

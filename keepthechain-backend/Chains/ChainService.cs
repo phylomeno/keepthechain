@@ -15,7 +15,7 @@ namespace KeepTheChain.Chains
 
         public async Task<Chain> AddNewChain(Chain chain)
         {
-            chain.Id = Guid.NewGuid();
+            chain.Id = Guid.NewGuid().ToString();
 
             return await _chainRepository.AddChain(chain);
         }

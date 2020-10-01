@@ -1,6 +1,7 @@
 using KeepTheChain.Chains;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,6 +21,8 @@ namespace KeepTheChain
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton(new CosmosClient(Configuration["CosmosDb:Uri"], Configuration["CosmosDb:PrimaryKey"]));
+            services.AddSingleton<ChainRepository>();
             services.AddSingleton<ChainService>();
         }
 

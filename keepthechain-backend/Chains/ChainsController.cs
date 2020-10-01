@@ -29,9 +29,9 @@ namespace KeepTheChain.Chains
         }
 
         [HttpPost]
-        public ActionResult<Chain> AddChain(Chain chain)
+        public async Task<ActionResult<Chain>> AddChain(Chain chain)
         {
-            var createdChain = _chainService.AddNewChain(chain);
+            var createdChain = await _chainService.AddNewChain(chain);
 
             return CreatedAtAction(nameof(GetChain), new { id = createdChain.Id }, createdChain);
         }

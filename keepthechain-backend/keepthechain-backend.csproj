@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>KeepTheChain</RootNamespace>
+    <UserSecretsId>b1f92236-4a8f-4e0a-8101-e1b8a3d12d2f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
