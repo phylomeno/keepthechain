@@ -1,34 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace KeepTheChain.Chains
 {
     public class ChainService
     {
-        private readonly IDictionary<Guid, Chain> _chains = new Dictionary<Guid, Chain>();
+        private readonly ChainRepository _chainRepository;
 
-        public Chain AddNewChain(Chain chain)
+        public ChainService(ChainRepository chainRepository)
+        {
+            _chainRepository = chainRepository;
+        }
+
+        public async Task<Chain> AddNewChain(Chain chain)
         {
             chain.Id = Guid.NewGuid();
-            _chains[chain.Id] = chain;
 
-            return chain;
+            return await _chainRepository.AddChain(chain);
         }
 
         public IList<Chain> GetChains()
         {
-            return _chains.Values.ToList();
+            return _chainRepository.GetChains();
         }
 
-        public Chain GetChain(Guid id)
+        public async Task<Chain> GetChain(string id)
         {
-            return _chains.ContainsKey(id) ? _chains[id] : null;
+            return await _chainRepository.GetChain(id);
         }
 
-        public void RemoveChain(Guid id)
+        public async Task RemoveChain(string id)
         {
-            _chains.Remove(id); 
+            await _chainRepository.RemoveChain(id);
         }
     }
 }

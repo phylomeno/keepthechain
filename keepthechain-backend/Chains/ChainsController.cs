@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KeepTheChain.Chains
@@ -17,9 +17,9 @@ namespace KeepTheChain.Chains
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Chain> GetChain(Guid id)
+        public async Task<ActionResult<Chain>> GetChain(string id)
         {
-            return _chainService.GetChain(id);
+            return await _chainService.GetChain(id);
         }
 
         [HttpGet]
@@ -37,15 +37,15 @@ namespace KeepTheChain.Chains
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<Chain> DeleteChain(Guid id)
+        public async Task<ActionResult<Chain>> DeleteChain(string id)
         {
-            var chain = _chainService.GetChain(id);
+            var chain = await _chainService.GetChain(id);
             if (chain == null)
             {
                 return NotFound();
             }
             
-            _chainService.RemoveChain(id);
+            await _chainService.RemoveChain(id);
 
             return chain;
         }
