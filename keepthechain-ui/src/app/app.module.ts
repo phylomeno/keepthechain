@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -8,11 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChainItemComponent } from './chain-item/chain-item.component';
+import { ListChainsComponent } from './list-chains/list-chains.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChainItemComponent
+    ChainItemComponent,
+    ListChainsComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import { ChainItemComponent } from './chain-item/chain-item.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
